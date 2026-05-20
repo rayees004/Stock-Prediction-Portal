@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 const MainContent = () => {
   return (
@@ -14,7 +15,7 @@ const MainContent = () => {
               today and unlock powerful tools for tracking trends, analyzing
               stocks, and exploring future market opportunities.
             </p>
-            <button className='btn btn-outline-primary'>Login</button>
+            <Button text="Login" class="btn-outline-primary"/>
           </div>
         </div>
       
