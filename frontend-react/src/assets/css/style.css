@@ -21,3 +21,15 @@ body{
 .rounded1{
     border-radius: 1.5rem;
 }
+.password-field{
+    position: relative;
+}
+.eyeicon{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: rgb(12, 0, 183);
+}
