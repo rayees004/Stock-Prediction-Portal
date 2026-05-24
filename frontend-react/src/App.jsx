@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import AuthProvider from "./AuthProvider";
+import DashBord from "./components/dashbord/DashBord";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<MainContent />} />
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/dashbord" element={<DashBord />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

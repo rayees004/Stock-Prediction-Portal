@@ -20,7 +20,10 @@ const Header = () => {
     <nav className='navbar container align-items-start'>
       <Link className='text-light navbar-brand' to="/">Stock Prediction Portal</Link>
       <div>
-        {islogedin ? (<button className='btn btn-outline-danger' onClick={handleLogout}>Logout</button>):(
+        {islogedin ? (<>
+        <Button class="btn-primary" text="Dashbord" url="/dashbord"/>&nbsp;
+        <button className='btn btn-outline-danger' onClick={handleLogout}>Logout</button>
+        </>):(
           <>
           <Button class="btn-outline-primary" text="Login" url="/login"/>
           <Button class="btn-primary ms-2" text="Register" url="/register"/>

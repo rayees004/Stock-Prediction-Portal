@@ -16,7 +16,7 @@ const MainContent = () => {
               today and unlock powerful tools for tracking trends, analyzing
               stocks, and exploring future market opportunities.
             </p>
-            <Button text="Login" class="btn-outline-primary" url="/login"/>
+            <Button text="Explore" class="btn-outline-primary" url="/dashbord"/>
           </div>
         </div>
       
