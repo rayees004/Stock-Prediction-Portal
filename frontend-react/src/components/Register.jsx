@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +14,7 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [regsuccess,setRegSuccess] = useState(false)
   const [regdelay,setRegDelay] = useState(false)
+  
 
   const [passwordview1, setPasswordview1] = useState({
     type: "password",
@@ -60,6 +63,7 @@ const Register = () => {
         console.log("register Successfully");
         setRegSuccess(true)
         setErrors({});
+        navigate('/login')
       } catch (error) {
         setErrors(error.response.data);
         console.error("error:", error.response.data);
