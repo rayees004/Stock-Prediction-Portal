@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 
 const Register = () => {
@@ -8,6 +10,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [regsuccess,setRegSuccess] = useState(false)
+  const [regdelay,setRegDelay] = useState(false)
 
   const [passwordview1, setPasswordview1] = useState({
     type: "password",
@@ -20,6 +24,7 @@ const Register = () => {
   
 
   const handlepasswordview1 = () => {
+    
     if (passwordview1.type == "password") {
       setPasswordview1({ type: "text", icon: "bi-eye" });
     } else {
@@ -33,6 +38,7 @@ const Register = () => {
       setPasswordview2({ type: "password", icon: "bi-eye-slash" });
     }
   };
+  
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -45,17 +51,21 @@ const Register = () => {
     
     if (password == confirmpassword) {
       try {
+        setRegDelay(true)
         const response = await axios.post(
           "http://127.0.0.1:8000/api/v1/register/",
           userData,
         );
         console.log("return response:", response.data);
         console.log("register Successfully");
-        setSuccess(true)
+        setRegSuccess(true)
         setErrors({});
       } catch (error) {
         setErrors(error.response.data);
         console.error("error:", error.response.data);
+      }
+      finally{
+        setRegDelay(false)
       }
     } else {
       setErrors({ passworderror: "password does't Match" });
@@ -136,13 +146,15 @@ const Register = () => {
                   <div className="text-danger">{errors.password}</div>
                 )}
               </small>
+              {regsuccess && (<div className="alert alert-success">Registeration Success
+              </div>)}
               
-              
-              <input
+              {regdelay ? (<button type="submit" className="btn btn-outline-primary d-block mx-auto mt-3" disabled><FontAwesomeIcon icon={faSpinner} spin/> please wait...</button>):(<input
                 type="submit"
                 value="Register"
                 className="btn btn-outline-primary d-block mx-auto mt-3"
-              />
+              />)}
+              
             </form>
           </div>
         </div>
