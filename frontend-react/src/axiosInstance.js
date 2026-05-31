@@ -16,7 +16,6 @@ axiosInstence.interceptors.request.use(
     const accessToken = localStorage.getItem("accessToken")
     config.headers["Authorization"] = `Bearer ${accessToken}`;
     config.headers["Content-Type"] = "application/json"
-    console.log("configdata",config)
     return config;
   },
   function (error) {
@@ -24,4 +23,33 @@ axiosInstence.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+// Add a response interceptor
+axiosInstence.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const originalRequest = error.config
+    if (error.request.status == 401 && !originalRequest.retry){
+      originalRequest.retry = true
+      const refreshToken = localStorage.getItem("refreshToken")
+      console.log("reresquest working")
+      try{
+      const response =await axiosInstence.post("/token/refresh/",{refresh:refreshToken})
+      localStorage.setItem("accessToken",response.data.access)
+      originalRequest.headers["Authorization"] = `Bearer ${response.data.access}`;
+      return axiosInstence(originalRequest)
+    }
+    catch(error){
+      localStorage.removeItem("accessToken")
+      localStorage.removeItem("refreshToken")
+      window.location.href="/login"
+    }
+    }
+    
+    return Promise.reject(error);
+  }
+);
+
 export default axiosInstence;

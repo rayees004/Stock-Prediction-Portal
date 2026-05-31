@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useState,useEffect } from 'react'
 import axiosInstence from '../../axiosInstance'
+import Chart from './Chart'
+
+
 
 
 const DashBord = () => {
@@ -19,7 +22,11 @@ const DashBord = () => {
 
   return (
     <div className='container text-light'>
-        <h3>dashbord page</h3>
+        <Chart />
+        
+        
+       
+        
     </div>
   )
 }
