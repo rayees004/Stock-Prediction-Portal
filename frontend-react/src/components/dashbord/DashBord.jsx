@@ -21,12 +21,9 @@ const DashBord = () => {
     },[])
 
   return (
-    <div className='container text-light'>
-        <Chart />
-        
-        
-       
-        
+    <div className='row'>
+        <div className='col-md-3'>1</div>
+        <div className='col-md-3'>2</div>
     </div>
   )
 }
