@@ -45,11 +45,11 @@ const Chart = () => {
         
     {data.data ? (
       <div>
-        {slicedata.end < data.data.length ? (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i class="bi bi-arrow-left"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i class="bi bi-arrow-left"></i></button>)}
-        {slicedata.start !=0 ?  (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i class="bi bi-arrow-right"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i class="bi bi-arrow-right"></i></button>)}
+        {slicedata.end < data.data.length ? (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i className="bi bi-arrow-left"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i class="bi bi-arrow-left"></i></button>)}
+        {slicedata.start !=0 ?  (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i class="bi bi-arrow-right"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i className="bi bi-arrow-right"></i></button>)}
         {slicedata.start != 0 ? (<button className='btn btn-outline-primary'onClick={()=>setSliceData({start:0,end:20})}>latest</button>):(<button className='btn btn-outline-primary disabled'onClick={()=>setSliceData({start:0,end:20})}>latest</button>)}
         <LineChart
-      style={{ width: '100%', aspectRatio: 1.618, maxWidth: 1800, height:'700px', margin: '20px 0px 0px 0px'}}
+      style={{ width: '100%', aspectRatio: 1.618, maxWidth: 1800, height:'500px', margin: '20px 0px 0px 0px'}}
       responsive
       data={(data.data.slice(slicedata.start,slicedata.end)).reverse()}
       margin={{
@@ -59,7 +59,7 @@ const Chart = () => {
         left: 10,
       }}
     >
-      <CartesianGrid stroke="#000000e9" strokeDasharray="5 5" />
+      <CartesianGrid stroke="#5d605de9" strokeDasharray="5 5" />
       <Line type="monotone" dataKey="value" stroke="#385dc2" strokeWidth={2} name={data.name} />
       <XAxis dataKey="date" dataKey="date"
   angle={-90}
