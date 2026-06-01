@@ -9,6 +9,9 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import AuthProvider from "./AuthProvider";
 import DashBord from "./components/dashbord/DashBord";
+import PrivateRoute from "./privateRoute";
+import PublicRouter from "./PublicRouter";
+import './App.css'
 
 function App() {
   return (
@@ -18,9 +21,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainContent />} />
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/dashbord" element={<DashBord />}/>
+          <Route path="/register" element={<PublicRouter><Register/></PublicRouter>}/>
+          <Route path="/login" element={<PublicRouter><Login /></PublicRouter>}/>
+          <Route path="/dashbord" element={<PrivateRoute ><DashBord /></PrivateRoute>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

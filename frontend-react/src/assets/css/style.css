@@ -33,3 +33,13 @@ body{
     font-size: 18px;
     color: rgb(12, 0, 183);
 }
+.side-nav-section{
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+.chart-section{
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
