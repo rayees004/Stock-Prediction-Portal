@@ -16,7 +16,6 @@ axiosInstence.interceptors.request.use(
     const accessToken = localStorage.getItem("accessToken")
     config.headers["Authorization"] = `Bearer ${accessToken}`;
     config.headers["Content-Type"] = "application/json"
-    console.log("normal access request")
     return config;
   },
   function (error) {
@@ -32,12 +31,10 @@ axiosInstence.interceptors.response.use(
   },
   async function (error) {
     const originalRequest = error.config
-    console.log("functoon call==============================")
+    
     if ((error.request.status == 401) && (!originalRequest.retry)){
-      console.log("===============original request===========",originalRequest.retry)
       originalRequest.retry = true
       const refreshToken = localStorage.getItem("refreshToken")
-      console.log("reresquest working")
       try{
       const response =await axiosInstence.post("/token/refresh/",{refresh:refreshToken})
       localStorage.setItem("accessToken",response.data.access)

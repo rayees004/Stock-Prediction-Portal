@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-const Chart = () => {
+const Chart = ({stock_url}) => {
     const [data,setData] = useState({data:"",interval:"",name:"",unit:""})
     const [slicedata,setSliceData] = useState({start:0,end:20,length:0})
     
@@ -15,7 +15,7 @@ const Chart = () => {
         const getData= async ()=>{
             try{
 
-                const response =await axios.get("https://www.alphavantage.co/query?function=WTI&interval=monthly&apikey=demo")
+                const response =await axios.get(stock_url)
                 // console.log(response.data)
                 
                 
@@ -31,9 +31,7 @@ const Chart = () => {
             
         };
         getData()
-    },[])
-    
-   
+    },[stock_url])
   return (
     <> 
     {data.data ? (
@@ -70,7 +68,7 @@ const Chart = () => {
     <p className='text-primary'>Unit Type : <span className='text-secondary'>{data.unit}</span></p>
     </div>
 
-    ):(<h1>data notavilable</h1>)}
+    ):(<div className=''><h1>data notavilable</h1></div>)}
     
     
 
