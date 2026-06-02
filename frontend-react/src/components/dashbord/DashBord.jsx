@@ -11,7 +11,7 @@ const DashBord = () => {
     useEffect( ()=> {
     const protetAccess = async()=>{
         try{
-            const response =await axiosInstence("/permited_access/")
+            const response =await axiosInstence("/stock/")
             console.log("data:",response.data)
         }catch(error){
             console.log(error)
