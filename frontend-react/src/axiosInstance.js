@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+let rerequest = true
 const baseURL=import.meta.env.VITE_BACKEND_BASE_API
 
 const axiosInstence = axios.create({
@@ -32,8 +32,9 @@ axiosInstence.interceptors.response.use(
   async function (error) {
     const originalRequest = error.config
     
-    if ((error.request.status == 401) && (!originalRequest.retry)){
+    if ((error.request.status == 401) && (!originalRequest.retry)&& rerequest){
       originalRequest.retry = true
+      rerequest = false
       const refreshToken = localStorage.getItem("refreshToken")
       try{
       const response =await axiosInstence.post("/token/refresh/",{refresh:refreshToken})

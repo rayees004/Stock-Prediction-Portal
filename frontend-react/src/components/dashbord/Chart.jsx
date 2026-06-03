@@ -68,7 +68,7 @@ const Chart = ({stock_url}) => {
     <p className='text-primary'>Unit Type : <span className='text-secondary'>{data.unit}</span></p>
     </div>
 
-    ):(<div className=''><h1>data notavilable</h1></div>)}
+    ):(<div className='loadchart container text-light'><h2 className='pleasewait'>Please Wait <div className='dotloader'><span >. . .</span></div></h2></div>)}
     
     
 
