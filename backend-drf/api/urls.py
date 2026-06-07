@@ -9,4 +9,5 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('permited_access/',UserView.PermitedView.as_view()),
     path('stock/',StockView.StockViewSet.as_view()),
+    path("predictedstock/<int:pk>/",StockView.StockPredictionViewSet.as_view())
 ]
