@@ -22,7 +22,6 @@ const Chart = ({stock_url}) => {
                 
                 
                 setData(response.data)
-                setSliceData({...slicedata,length : data.data.length})
                  
 
             }catch(error){
@@ -36,7 +35,7 @@ const Chart = ({stock_url}) => {
     <> 
     {data.data ? (
       <div>
-        {slicedata.end < data.data.length ? (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i className="bi bi-arrow-left"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i class="bi bi-arrow-left"></i></button>)}
+        {slicedata.end < data.data.length ? (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i className="bi bi-arrow-left"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start+20,end:slicedata.end+20})}><i className="bi bi-arrow-left"></i></button>)}
         {slicedata.start !=0 ?  (<button className='btn btn-outline-primary' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i className="bi bi-arrow-right"></i></button>):(<button className='btn btn-outline-primary disabled' onClick={()=>setSliceData({start:slicedata.start-20,end:slicedata.end-20})}><i className="bi bi-arrow-right"></i></button>)}
         {slicedata.start != 0 ? (<button className='btn btn-outline-primary'onClick={()=>setSliceData({start:0,end:20})}>latest</button>):(<button className='btn btn-outline-primary disabled'onClick={()=>setSliceData({start:0,end:20})}>latest</button>)}
         <LineChart

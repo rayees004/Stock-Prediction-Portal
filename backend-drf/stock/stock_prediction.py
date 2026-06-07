@@ -103,7 +103,7 @@ def predicted_stock(url=''):
 
 
         formatted_data = {
-            'next_prediction':next_prediction,
+            'next_prediction':next_prediction[0],
             "data": latest_30[['date', 'actual', 'predicted']].to_dict(orient='records')
         }
         return formatted_data

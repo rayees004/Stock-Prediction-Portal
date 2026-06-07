@@ -20,5 +20,4 @@ class StockPredictionViewSet(APIView):
         stock = Stock.objects.get(pk=pk)
         data = predicted_stock(stock.stock_api_url)
         data['stock'] = stock.stock_name
-        print(data)
         return Response(data,status=status.HTTP_200_OK)
